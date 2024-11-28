@@ -20,17 +20,38 @@ if ($Login) {
 
     $query = $conexion->prepare("SELECT * FROM usuario WHERE Usuario = ? AND Password = ?");
     $query->bind_param("ss", $Usuario, $Password);
-
     $query->execute();
-    $credenciales = $query->get_result();
+    $resultado = $query->get_result();
 
-    if ($credenciales->num_rows > 0) {
-        echo "Credencial correcta <br>";
+    if ($resultado->num_rows > 0) {
+        $usuario = $resultado->fetch_assoc();
+        $tipoUsuario = $usuario['Tipo'];
+
+        switch ($tipoUsuario) {
+            case "jefe":
+                redirect("mainJefe.php");
+                break;
+            case "administrador":
+                redirect("mainAdmin.php");
+                break;
+            case "trabajador":
+                redirect("mainTrabajador.php");
+                break;
+            default:
+                redirect("LogIn.php");
+                break;
+        }
     } else {
-        echo "Credencial incorrecta <br>";
+        redirect("LogIn.php");
     }
 
     $query->close();
 }
 
 $conexion->close();
+
+function redirect($url)
+{
+    header('Location: ' . $url);
+    exit();
+}
