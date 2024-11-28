@@ -1,0 +1,7 @@
+
+#Libreria para crear pdf con php. Descarga: http://fpdf.org/
+fpdf
+
+#Codigos para generar reporte con base a las vistas creadas en la BD. No los vamos a integrar todavia
+Reporte_Proy.php
+Reporte_Trabajador.php
