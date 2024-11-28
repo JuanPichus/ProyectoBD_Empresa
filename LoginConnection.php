@@ -29,13 +29,13 @@ if ($Login) {
 
         switch ($tipoUsuario) {
             case "jefe":
-                redirect("mainJefe.php");
+                redirect("menuJefe.php");
                 break;
             case "administrador":
-                redirect("mainAdmin.php");
+                redirect("menuAdmin.php");
                 break;
             case "trabajador":
-                redirect("mainTrabajador.php");
+                redirect("menuTrabajador.php");
                 break;
             default:
                 redirect("LogIn.php");
