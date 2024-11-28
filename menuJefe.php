@@ -13,10 +13,10 @@
         <li>
             <a>Trabajadores</a>
             <ul class="dropdown">
-                <li><a href="#">Agregar</a></li>
-                <li><a href="#">Eliminar</a></li>
-                <li><a href="#">Actualizar</a></li>
-                <li><a href="#">Informacion</a></li>
+                <li><a href="create.php">Agregar</a></li>
+                <li><a href="delete.php">Eliminar</a></li>
+                <li><a href="edit.php">Actualizar</a></li>
+                <li><a href="read.php">Informacion</a></li>
             </ul>
         </li>
         <li>
