@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <form action="LoginConnect.php" method="post">
+    <form method="post">
         <p>Usuario:
             <input type="text" name="Usr" required>
         </p>
@@ -21,20 +21,19 @@
     <?php
     session_start();
 
-    $server = "localhost";
-    $usr = "root";
-    $pwd = "";
-    $bd = "bd_enterprise";
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $conexion = new mysqli($server, $usr, $pwd, $bd);
+        $server = "localhost";
+        $usr = "root";
+        $pwd = "";
+        $bd = "bd_enterprise";
 
-    if ($conexion->connect_error) {
-        die("Conexion fallida: " . $conexion->connect_error . "<br>");
-    }
+        $conexion = new mysqli($server, $usr, $pwd, $bd);
 
-    $Login = $_REQUEST['Login'];
+        if ($conexion->connect_error) {
+            die("Conexion fallida: " . $conexion->connect_error . "<br>");
+        }
 
-    if ($Login) {
         $Usuario = $_REQUEST['Usr'];
         $Password = $_REQUEST['Pwd'];
 
@@ -59,9 +58,8 @@
         }
 
         $query->close();
+        $conexion->close();
     }
-
-    $conexion->close();
     ?>
 </body>
 

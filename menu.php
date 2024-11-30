@@ -59,7 +59,7 @@ $tipoUsuario = $_SESSION['tipoUsuario'];
             <li>
                 <a>Proyectos</a>
                 <ul class="dropdown">
-                    <li><a href="#">Agregar</a></li>
+                    <li><a href="proyectoCreate.php">Agregar</a></li>
                     <li><a href="#">Informacion</a></li>
                     <li><a href="#">Actualizar</a></li>
                     <li><a href="#">Eliminar</a></li>
