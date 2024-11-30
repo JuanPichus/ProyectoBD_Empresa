@@ -39,6 +39,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'bd_enterprise') or die("Ocurrió 
 
         <input type="submit" value="Enviar">
         <input type="reset" value="Limpiar">
+    </form>
 
 </body>
 

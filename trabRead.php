@@ -24,8 +24,6 @@ $mysqli = new mysqli('localhost', 'root', '', 'bd_enterprise') or die("Ocurrió 
     }
     ?>
     <br>
-
-    </form>
 </body>
 
 </html>
