@@ -4,7 +4,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'bd_enterprise') or die("Ocurrió 
 <html>
 
 <head>
-    <?php include 'menuJefe.php'; ?>
+    <?php include 'menu.php'; ?>
 </head>
 
 <body>
@@ -19,7 +19,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'bd_enterprise') or die("Ocurrió 
             ?>
         </select><br><br>
 
-        <input type="submit" value="Enviar">
+        <input type="submit" value="Editar">
 
     </form>
 </body>

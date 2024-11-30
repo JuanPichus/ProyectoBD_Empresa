@@ -1,8 +1,7 @@
 <html>
 
 <head>
-    <?php include 'menuJefe.php'; ?>
-</head>
+    <?php include 'menu.php'; ?>
 
 <body>
     <?php

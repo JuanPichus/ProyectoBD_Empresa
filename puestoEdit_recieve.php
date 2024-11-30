@@ -14,14 +14,14 @@
     $conexion = new mysqli($servidor, $usuario, $pwd, $bd);
 
     $nombre = $_REQUEST['nombre'];
-    $salario_base = $_REQUEST['salario_base'];
+    $salario = $_REQUEST['salario'];
     $descripcion = $_REQUEST['descripcion'];
+    $puestoEditar = $_REQUEST['puesto'];
 
-    $sql = "INSERT INTO puesto (Nombre_Puesto, Salario_Base, Descripcion) 
-        VALUES ('$nombre', '$salario_base', '$descripcion')";
+    $sql = "UPDATE puesto SET Nombre_Puesto='$nombre', Salario_Base='$salario', Descripcion='$descripcion' WHERE ID_Puesto = '$puestoEditar'";
 
     if ($conexion->query($sql) === TRUE) {
-        echo "Nuevo trabajador registrado correctamente.";
+        echo "Puesto modificado correctamente.";
     } else {
         echo "Error: " . $sql . "<br>" . $conexion->error;
     }

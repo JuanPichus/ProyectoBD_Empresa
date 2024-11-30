@@ -4,7 +4,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'bd_enterprise') or die("Ocurrió 
 <html>
 
 <head>
-    <?php include 'menuJefe.php'; ?>
+    <?php include 'menu.php'; ?>
 </head>
 
 <body>
@@ -15,8 +15,8 @@ $mysqli = new mysqli('localhost', 'root', '', 'bd_enterprise') or die("Ocurrió 
 
         $query = $mysqli->query("SELECT * FROM cliente WHERE ID_Cliente='$IDeditar'");
         while ($valores = mysqli_fetch_array($query)) {
-            echo 'Cliente: <input type="number" name="editar" value="' . $IDeditar . '"><br><br>';
-            echo 'ID: <input type="number" name="ID" value="' . $IDeditar . '"><br>';
+            echo 'Cliente: <a>' . $IDeditar . '<a><br><br>';
+            echo '<input type="hidden" name = "trabajador" value = ' . $IDeditar . '>';
             echo 'Nombre: <input type="text" name="nombre" value="' . $valores["Nombre"] . '"><br>';
             echo 'Apellido paterno: <input type="text" name="ape_paterno" value="' . $valores["Apellido_Paterno"] . '"><br>';
             echo 'Apellido materno: <input type="text" name="ape_materno" value="' . $valores["Apellido_Materno"] . '"><br>';
@@ -25,7 +25,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'bd_enterprise') or die("Ocurrió 
         }
         ?>
 
-        <input type="submit" value="Enviar">
+        <input type="submit" value="Editar">
         <input type="reset" value="Limpiar">
 
 </body>
