@@ -10,7 +10,6 @@ $mysqli = new mysqli('localhost', 'root', '', 'bd_enterprise') or die("Ocurrió 
 <body>
     <form action="clienteCreate_recieve.php" method="post">
 
-        ID: <input type="number" name="ID"><br>
         Nombre: <input type="text" name="nombre"><br>
         Apellido Paterno: <input type="text" name="ape_paterno" required><br>
         Apellido Materno: <input type="text" name="ape_materno" required><br>

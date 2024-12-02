@@ -44,16 +44,14 @@ $mysqli = new mysqli('localhost', 'root', '', 'bd_enterprise') or die("Ocurrió 
     </form>
 
     <?php
+    $servidor = "localhost";
+    $usuario = "root";
+    $pwd = "";
+    $bd = "bd_enterprise";
+
+    $conexion = new mysqli($servidor, $usuario, $pwd, $bd);
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-        $servidor = "localhost";
-        $usuario = "root";
-        $pwd = "";
-        $bd = "bd_enterprise";
-
-        $conexion = new mysqli($servidor, $usuario, $pwd, $bd);
-
         $nombre = $_REQUEST['nombre'];
         $descripcion = $_REQUEST['descripcion'];
         $fecha_ini = $_REQUEST['fecha_ini'];
@@ -65,25 +63,20 @@ $mysqli = new mysqli('localhost', 'root', '', 'bd_enterprise') or die("Ocurrió 
         $insertProyecto = "INSERT INTO proyecto (Nombre_Proyecto, Descripcion, Fecha_Inicio, Fecha_Fin, Presupuesto, TrabajadorFK) 
         VALUES ('$nombre', '$descripcion', '$fecha_ini', '$fecha_fin', '$presupuesto', '$encargado')";
 
-        $getIdProyecto = $conexion->prepare("SELECT ID_Proyecto FROM proyecto WHERE Nombre_Proyecto = ?");
-        $getIdProyecto->bind_param("s", $nombre);
-        $getIdProyecto->execute();
-        $idProyecto = $getIdProyecto->get_result();
+        if ($conexion->query($insertProyecto) === TRUE) {
+            $idProy = $conexion->insert_id;
 
-        if ($idProyecto->num_rows > 0)
-            $idProy = $idProyecto->fetch_column();
+            $actualDate = date("Y-m-d");
+            $cobroEmpresa = ($presupuesto * 0.16) + 10000;
+            $cobroTotal = $cobroEmpresa + $presupuesto;
 
-        $actualDate = date("Y-m-d");
-        $cobroEmpresa = ($presupuesto * 0.16) + 10000;
-        $cobroTotal = $cobroEmpresa + $presupuesto;
+            $insertFactura = "INSERT INTO factura (Fecha_Emicion, Monto, ProyectoFK, ClienteFK) VALUES ('$actualDate', '$cobroTotal', '$idProy', '$cliente')";
 
-        $insertFactura = "INSERT INTO factura (Fecha_Emicion, Monto, ProyectoFK, ClienteFK) 
-        VALUES ('$actualDate', '$cobroTotal', '$idProy', '$cliente')";
-
-        if ($conexion->query($insertProyecto) === TRUE && $conexion->query($insertFactura) === TRUE) {
-            echo "Proyecto y factura generados correctamente.";
-        } else {
-            echo "Error: " . $sql . "<br>" . $conexion->error;
+            if ($conexion->query($insertFactura) === TRUE) {
+                echo "\nProyecto y factura generados correctamente.";
+            } else {
+                echo "\nError: " . $sql . "<br>" . $conexion->error;
+            }
         }
 
         $conexion->close();

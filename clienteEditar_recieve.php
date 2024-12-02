@@ -18,10 +18,10 @@
     $ape_materno = $_REQUEST['ape_materno'];
     $telefono = $_REQUEST['tel'];
     $correo = $_REQUEST['correo'];
-    $IDeditar2 = $_REQUEST['editar'];
+    $IDeditar = $_REQUEST['IDeditar'];
 
     $sql = "UPDATE cliente SET Nombre='$nombre', Apellido_Paterno='$ape_paterno', Apellido_Materno='$ape_materno', 
-        Telefono='$telefono', Correo='$correo' WHERE ID_Cliente = '$IDeditar2'";
+        Telefono='$telefono', Correo='$correo' WHERE ID_Cliente = '$IDeditar'";
 
     if ($conexion->query($sql) === TRUE) {
         echo "Trabajador modificado correctamente.";

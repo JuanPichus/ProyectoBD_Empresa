@@ -13,14 +13,24 @@ $mysqli = new mysqli('localhost', 'root', '', 'bd_enterprise') or die("Ocurrió 
 </head>
 
 <body>
+    <a href="Reporte_Proy.php">
+        <button>Descargar Reporte</button>
+        <br><br>
+    </a>
+
     <?php
     $query = $mysqli->query("SELECT * FROM proyecto");
     while ($valores = mysqli_fetch_array($query)) {
-        echo "Nombre: " . $valores["Nombre_Proyecto"] . "<br>";
-        echo "Fecha Inicio: " . $valores["Fecha_Inicio"] . "<br>";
-        echo "Fecha Fin: " . $valores["Fecha_Fin"] . "<br>";
-        echo "Presupuesto: " . $valores["Presupuesto"] . "<br>";
-        echo "Descripcion: " . $valores["Descripcion"] . "<br>";
+        showProyecto($valores);
+    }
+
+    function showProyecto($datosProyecto)
+    {
+        echo "Nombre: " . $datosProyecto["Nombre_Proyecto"] . "<br>";
+        echo "Fecha Inicio: " . $datosProyecto["Fecha_Inicio"] . "<br>";
+        echo "Fecha Fin: " . $datosProyecto["Fecha_Fin"] . "<br>";
+        echo "Presupuesto: " . $datosProyecto["Presupuesto"] . "<br>";
+        echo "Descripcion: " . $datosProyecto["Descripcion"] . "<br>";
         echo "<br><br>";
     }
     ?>

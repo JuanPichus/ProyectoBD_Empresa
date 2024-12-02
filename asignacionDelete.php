@@ -8,13 +8,13 @@ $mysqli = new mysqli('localhost', 'root', '', 'bd_enterprise') or die("Ocurrió 
 </head>
 
 <body>
-    <form action="clienteDelete_recieve.php" method="post">
+    <form action="asignacionDelete_recieve.php" method="post">
 
-        ID del cliente a eliminar: <select name="ID"><br>
+        ID de la asignación a eliminar: <select name="IDeditar"><br>
             <?php
-            $query = $mysqli->query("SELECT * FROM cliente");
+            $query = $mysqli->query("SELECT * FROM asignacion");
             while ($valores = mysqli_fetch_array($query)) {
-                echo '<option value="' . $valores["ID_Cliente"] . '">' . $valores["ID_Cliente"] . '</option>';
+                echo '<option value="' . $valores["ID"] . '">' . $valores["ID"] . '</option>';
             }
             ?>
         </select><br><br>

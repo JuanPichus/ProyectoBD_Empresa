@@ -42,8 +42,8 @@ $tipoUsuario = $_SESSION['tipoUsuario'];
                 </ul>
             </li>
             <li><a href="clienteRead.php">Clientes</a></li>
-            <li><a href="#">Proyectos</a></li>
-            <li><a href="#">Facturas</a></li>
+            <li><a href="proyectoRead.php">Proyectos</a></li>
+            <li><a href="facturaRead.php">Facturas</a></li>
 
         <?php elseif ($tipoUsuario === 'administrador'): ?>
             <!-- Menú para Administrador -->
@@ -68,17 +68,17 @@ $tipoUsuario = $_SESSION['tipoUsuario'];
             <li>
                 <a>Asignaciones</a>
                 <ul class="dropdown">
-                    <li><a href="#">Agregar</a></li>
-                    <li><a href="#">Informacion</a></li>
-                    <li><a href="#">Eliminar</a></li>
+                    <li><a href="asignacionCreate.php">Agregar</a></li>
+                    <li><a href="asignacionRead.php">Informacion</a></li>
+                    <li><a href="asignacionDelete.php">Eliminar</a></li>
                 </ul>
             </li>
-            <li><a href="#">Facturas</a></li>
+            <li><a href="facturaRead.php">Facturas</a></li>
 
         <?php elseif ($tipoUsuario === 'trabajador'): ?>
             <!-- Menú para Trabajador -->
             <li><a href="clienteRead.php">Cliente</a></li>
-            <li><a href="#">Proyecto</a></li>
+            <li><a href="proyectoRead.php">Proyecto</a></li>
         <?php endif; ?>
 
         <!-- Opción común para todos -->

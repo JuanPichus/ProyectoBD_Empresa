@@ -8,7 +8,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'bd_enterprise') or die("Ocurrió 
 </head>
 
 <body>
-    <form action="createTrab_recieve.php" method="post">
+    <form action="trabCreate_recieve.php" method="post">
 
         Nomina: <input type="number" name="nomina" required><br>
         Nombre(s): <input type="text" name="nombre" required><br>

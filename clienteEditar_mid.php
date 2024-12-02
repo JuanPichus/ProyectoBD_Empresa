@@ -15,8 +15,8 @@ $mysqli = new mysqli('localhost', 'root', '', 'bd_enterprise') or die("Ocurrió 
 
         $query = $mysqli->query("SELECT * FROM cliente WHERE ID_Cliente='$IDeditar'");
         while ($valores = mysqli_fetch_array($query)) {
-            echo 'Cliente: <a>' . $IDeditar . '<a><br><br>';
-            echo '<input type="hidden" name = "trabajador" value = ' . $IDeditar . '>';
+            echo 'Cliente: <a>' . $IDeditar . '<a><br>';
+            echo '<input type="hidden" name = "IDeditar" value = ' . $IDeditar . '>';
             echo 'Nombre: <input type="text" name="nombre" value="' . $valores["Nombre"] . '"><br>';
             echo 'Apellido paterno: <input type="text" name="ape_paterno" value="' . $valores["Apellido_Paterno"] . '"><br>';
             echo 'Apellido materno: <input type="text" name="ape_materno" value="' . $valores["Apellido_Materno"] . '"><br>';

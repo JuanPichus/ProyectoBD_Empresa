@@ -8,7 +8,10 @@ $mysqli = new mysqli('localhost', 'root', '', 'bd_enterprise') or die("Ocurrió 
 </head>
 
 <body>
-
+    <a href="Reporte_Trabajador.php">
+        <button>Descargar Reporte</button>
+        <br><br>
+    </a>
     <?php
     $query = $mysqli->query("SELECT * FROM trabajador");
     while ($valores = mysqli_fetch_array($query)) {

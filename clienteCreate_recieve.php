@@ -13,15 +13,13 @@
 
     $conexion = new mysqli($servidor, $usuario, $pwd, $bd);
 
-    $id = $_REQUEST['ID'];
     $nombre = $_REQUEST['nombre'];
     $ape_paterno = $_REQUEST['ape_paterno'];
     $ape_materno = $_REQUEST['ape_materno'];
     $telefono = $_REQUEST['tel'];
     $correo = $_REQUEST['correo'];
 
-    $sql = "INSERT INTO cliente (ID_Cliente, Nombre, Apellido_Paterno, Apellido_Materno, Telefono, Correo) 
-        VALUES ('$id', '$nombre', '$ape_paterno', '$ape_materno', '$telefono', '$correo')";
+    $sql = "INSERT INTO cliente (Nombre, Apellido_Paterno, Apellido_Materno, Telefono, Correo) VALUES ('$nombre', '$ape_paterno', '$ape_materno', '$telefono', '$correo')";
 
     if ($conexion->query($sql) === TRUE) {
         echo "Cliente registrado correctamente.";
