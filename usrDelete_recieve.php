@@ -22,16 +22,19 @@
     }
 
     if (isset($_POST['Eliminar'])) {
-        $asignacionID = $_REQUEST['asignacion'];
+        $usrID = $_REQUEST['usrID'];
 
-        $deleteAsig = $conexion->prepare("DELETE FROM asignacion WHERE ID = ?");
-        $deleteAsig->bind_param("i", $asignacionID);
-        $deleteAsig->execute();
+        $deleteUsuario = $conexion->prepare("DELETE FROM usuario WHERE ID_Usuario = ?");
+        $deleteUsuario->bind_param("i", $usrID);
 
-        if ($deleteAsig->affected_rows > 0) {
-            echo "Asignacion eliminada correctamente.";
+        if ($deleteUsuario->execute()) {
+            if ($deleteUsuario->affected_rows > 0) {
+                echo "Usuario eliminado correctamente.";
+            } else {
+                echo "Error al eliminar al Usuario o no existe.";
+            }
         } else {
-            echo "Error al eliminar la asignacion o no existe.";
+            echo "ERROR";
         }
     } else {
         echo "Accion cancelada";

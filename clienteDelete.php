@@ -8,7 +8,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'bd_enterprise') or die("Ocurrió 
 </head>
 
 <body>
-    <form action="clienteDelete_recieve.php" method="post">
+    <form action="clienteDelete_mid.php" method="post">
 
         ID del cliente a eliminar: <select name="ID"><br>
             <?php

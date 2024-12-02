@@ -44,6 +44,14 @@ $tipoUsuario = $_SESSION['tipoUsuario'];
             <li><a href="clienteRead.php">Clientes</a></li>
             <li><a href="proyectoRead.php">Proyectos</a></li>
             <li><a href="facturaRead.php">Facturas</a></li>
+            <li>
+                <a>Usuarios</a>
+                <ul class="dropdown">
+                    <li><a href="usrCreate.php">Agregar</a></li>
+                    <li><a href="usrDelete.php">Eliminar</a></li>
+                    <li><a href="usrRead.php">Informacion</a></li>
+                </ul>
+            </li>
 
         <?php elseif ($tipoUsuario === 'administrador'): ?>
             <!-- Menú para Administrador -->

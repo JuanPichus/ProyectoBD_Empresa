@@ -35,7 +35,7 @@
         }
 
         $Usuario = $_REQUEST['Usr'];
-        $Password = $_REQUEST['Pwd'];
+        $Password = sha1($_REQUEST['Pwd']);
 
         $query = $conexion->prepare("SELECT * FROM usuario WHERE Usuario = ? AND Password = ?");
         $query->bind_param("ss", $Usuario, $Password);
@@ -54,6 +54,7 @@
         } else {
             // Usuario o contraseña incorrectos
             header('Location: LogIn.php');
+            echo "Usuario o contraseña incorrectos";
             exit();
         }
 

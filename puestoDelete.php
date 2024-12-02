@@ -8,7 +8,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'bd_enterprise') or die("Ocurrió 
 </head>
 
 <body>
-    <form action="puestoDelete_recieve.php" method="post">
+    <form action="puestoDelete_mid.php" method="post">
 
         Nombre del Puesto:
         <select name="Puesto">

@@ -1,7 +1,12 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <?php include 'menu.php'; ?>
+</head>
 
 <body>
     <?php
@@ -12,31 +17,28 @@
 
     $conexion = new mysqli($servidor, $usuario, $pwd, $bd);
 
-    //codigo para checar si agluna factura esta relacionada al cliente buscando entre los ClienteFK de las facturas, y si se encuentra al que se quiere eliminar, que no deje, en cambio que lo borre
-
-    $ID = $_REQUEST['ID'];
-
-    $verificarFactura = $conexion->prepare("SELECT COUNT(*) AS total FROM factura WHERE ClienteFK = ?");
-    $verificarFactura->bind_param("i", $ID);
-    $verificarFactura->execute();
-    $resultado = $verificarFactura->get_result();
-    $datos = $resultado->fetch_assoc();
-
-    if ($datos['total'] > 0) {
-        // El cliente está relacionado con una factura
-        echo "No se puede eliminar el cliente porque está relacionado con " . $datos['total'] . " factura(s).";
-    } else {
-        // Eliminar el cliente si no está relacionado con ninguna factura
-        $sql = $conexion->prepare("DELETE FROM cliente WHERE ID_Cliente = ?");
-        $sql->bind_param("i", $ID);
-
-        if ($sql->execute()) {
-            echo "Cliente eliminado correctamente.";
-        } else {
-            echo "Error al eliminar el cliente: " . $conexion->error;
-        }
+    if ($conexion->connect_error) {
+        die("Error de conexion: " . $conexion->connect_error);
     }
 
+    if (isset($_POST['Eliminar'])) {
+        $clienteID = $_REQUEST['cliente'];
+
+        $deleteClie = $conexion->prepare("DELETE FROM cliente WHERE ID_Cliente = ?");
+        $deleteClie->bind_param("i", $clienteID);
+
+        if ($deleteClie->execute()) {
+            if ($deleteClie->affected_rows > 0) {
+                echo "Cliente eliminado correctamente.";
+            } else {
+                echo "Error al eliminar al cliente o no existe.";
+            }
+        } else {
+            echo "ERROR";
+        }
+    } else {
+        echo "Accion cancelada";
+    }
     $conexion->close();
     ?>
 </body>

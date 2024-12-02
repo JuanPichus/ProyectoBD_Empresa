@@ -8,16 +8,17 @@ $mysqli = new mysqli('localhost', 'root', '', 'bd_enterprise') or die("Ocurrió 
 </head>
 
 <body>
-    <form action="asignacionDelete_mid.php" method="post">
+    <form action="usrDelete_mid.php" method="post">
 
-        ID de la asignación a eliminar: <select name="IDdelete"><br>
+        ID Usuario:
+        <select name="Usuario">
             <?php
-            $query = $mysqli->query("SELECT * FROM asignacion");
+            $query = $mysqli->query("SELECT * FROM usuario");
             while ($valores = mysqli_fetch_array($query)) {
-                echo '<option value="' . $valores["ID"] . '">' . $valores["ID"] . '</option>';
+                echo '<option value="' . $valores['ID_Usuario'] . '">' . $valores['ID_Usuario'] . " " . $valores['Usuario'] . "@" .  $valores['Tipo'] . '</option>';
             }
             ?>
-        </select><br><br>
+        </select>
 
         <input type="submit" value="Eliminar">
 

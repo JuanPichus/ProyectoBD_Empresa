@@ -1,6 +1,10 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <?php include 'menu.php'; ?>
 </head>
 
@@ -13,16 +17,28 @@
 
     $conexion = new mysqli($servidor, $usuario, $pwd, $bd);
 
-    $ID_Puesto = $_REQUEST['Puesto'];
-
-    $sql = "DELETE FROM puesto WHERE ID_Puesto = '$ID_Puesto'";
-
-    if ($conexion->query($sql) === TRUE) {
-        echo "Puesto eliminado correctamente.";
-    } else {
-        echo "Error: " . $sql . "<br>" . $conexion->error;
+    if ($conexion->connect_error) {
+        die("Error de conexion: " . $conexion->connect_error);
     }
 
+    if (isset($_POST['Eliminar'])) {
+        $puestoID = $_REQUEST['puesto'];
+
+        $deletePuesto = $conexion->prepare("DELETE FROM puesto WHERE ID_Puesto = ?");
+        $deletePuesto->bind_param("i", $puestoID);
+
+        if ($deletePuesto->execute()) {
+            if ($deletePuesto->affected_rows > 0) {
+                echo "Cliente eliminado correctamente.";
+            } else {
+                echo "Error al eliminar al cliente o no existe.";
+            }
+        } else {
+            echo "ERROR";
+        }
+    } else {
+        echo "Accion cancelada";
+    }
     $conexion->close();
     ?>
 </body>
