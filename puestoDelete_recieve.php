@@ -29,9 +29,9 @@
 
         if ($deletePuesto->execute()) {
             if ($deletePuesto->affected_rows > 0) {
-                echo "Cliente eliminado correctamente.";
+                echo "Puesto eliminado correctamente.";
             } else {
-                echo "Error al eliminar al cliente o no existe.";
+                echo "Error al eliminar el puesto, o no existe.";
             }
         } else {
             echo "ERROR";

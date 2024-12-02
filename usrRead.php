@@ -23,7 +23,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'bd_enterprise') or die("Ocurrió 
     {
         echo "ID Usuario: " . $datos["ID_Usuario"] . "<br>";
         echo "Nombre de Usuario: " . $datos["Usuario"] . "<br>";
-        echo "Contraseña: " . $datos["Password"] . "<br>";
+        echo "Contraseña Encriptada: " . $datos["Password"] . "<br>";
         echo "Tipo: " . $datos["Tipo"] . "<br>";
         echo "<br><br>";
     }

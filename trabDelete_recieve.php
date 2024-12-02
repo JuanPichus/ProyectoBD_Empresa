@@ -29,9 +29,9 @@
 
         if ($deleteTrab->execute()) {
             if ($deleteTrab->affected_rows > 0) {
-                echo "Cliente eliminado correctamente.";
+                echo "Trabajador eliminado correctamente.";
             } else {
-                echo "Error al eliminar al cliente o no existe.";
+                echo "Error al eliminar al trabajador o no existe.";
             }
         } else {
             echo "ERROR";

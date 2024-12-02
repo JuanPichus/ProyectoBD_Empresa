@@ -21,7 +21,7 @@
         VALUES ('$nombre', '$salario_base', '$descripcion')";
 
     if ($conexion->query($sql) === TRUE) {
-        echo "Nuevo trabajador registrado correctamente.";
+        echo "Nuevo puesto registrado correctamente.";
     } else {
         echo "Error: " . $sql . "<br>" . $conexion->error;
     }

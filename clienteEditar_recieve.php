@@ -24,7 +24,7 @@
         Telefono='$telefono', Correo='$correo' WHERE ID_Cliente = '$IDeditar'";
 
     if ($conexion->query($sql) === TRUE) {
-        echo "Trabajador modificado correctamente.";
+        echo "Cliente modificado correctamente.";
     } else {
         echo "Error: " . $sql . "<br>" . $conexion->error;
     }

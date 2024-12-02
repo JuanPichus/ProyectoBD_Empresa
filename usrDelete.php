@@ -15,7 +15,7 @@ $mysqli = new mysqli('localhost', 'root', '', 'bd_enterprise') or die("Ocurrió 
             <?php
             $query = $mysqli->query("SELECT * FROM usuario");
             while ($valores = mysqli_fetch_array($query)) {
-                echo '<option value="' . $valores['ID_Usuario'] . '">' . $valores['ID_Usuario'] . " " . $valores['Usuario'] . "@" .  $valores['Tipo'] . '</option>';
+                echo '<option value="' . $valores['ID_Usuario'] . '">' . $valores['Usuario'] . "@" .  $valores['Tipo'] . '</option>';
             }
             ?>
         </select>

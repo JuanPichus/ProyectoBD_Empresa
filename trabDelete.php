@@ -10,7 +10,16 @@ $mysqli = new mysqli('localhost', 'root', '', 'bd_enterprise') or die("Ocurrió 
 <body>
     <form action="trabDelete_mid.php" method="post">
 
-        Nomina del trabajador a eliminar: <input type="number" name="nomina"><br><br>
+        Nombre del trabajador a eliminar:
+        <select name="nomina"><br>
+            <?php
+            $query = $mysqli->query("SELECT Nomina FROM trabajador");
+            while ($valores = mysqli_fetch_array($query)) {
+                echo '<option value="' . $valores["Nomina"] . '">' . $valores["Nomina"] . '</option>';
+            }
+            ?>
+        </select>
+        <br><br>
 
         <input type="submit" value="Eliminar">
 
